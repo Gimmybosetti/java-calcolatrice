@@ -83,33 +83,25 @@ public class CalcoliHelper {
 		}
 		
 		//metodi potenza
-		public static int Pow (int a, int esp) {
+		public static double Pow (int a, int esp) {
+			int tmp = a;
 			if (esp > 0 && (a > 0 || a < 0)) {
-				int tmp = a;
 				while(esp > 1) {
 					a = a*tmp;
 					esp--;
 				}
 				return a;
-			}else if (esp < 0) {
-				PowDouble(a, esp);
-			}else if (esp == 0) {
-				return 1;
 			}else if (a == 0) {
 				return 0;
-			}
-		return a;
-		}
-		
-		public static double PowDouble(int a, int esp) {
-			double ad = Double.valueOf(a);
-			double espd = Double.valueOf(esp);
-			
-				while (espd < 0.0) {
-					ad = a*ad;
-					espd++;
+			}else if (esp < 0){
+				while (esp < -1.0) {
+					a = a*tmp;
+					esp++;
 				}
-				return 1/ad;
+				return 1.0/a;
+			}else {
+				return 1;
+			}
 		}
 		
 }
